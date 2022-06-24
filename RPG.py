@@ -31,7 +31,7 @@ def useItm():
         print("[a] - Magic Potion. You have:", mPtn)
         print("[b] - Water Bottle. You have:", water)
         print("[c] - Date Cake. You have:", datecake)
-        print("[d] - Health Potion. You have:", mPtn)
+        print("[d] - Health Potion. You have:", hPtn)
         print("[e] - Go back.")
         print('--------------------------------------------')
         u = True
@@ -147,6 +147,9 @@ def addItm():
                 except ValueError:
                     print("Not a valid input.")
                     continue
+            if quan > space:
+                print("Not enough inventory space.")
+                return
             if it.lower() == "a" and (space != 0):
                 print(quan, "Magic Potions added.")
                 print('--------------------------------------------')
@@ -211,43 +214,65 @@ def removeItm():
         while m == True:
             print("Item?")
             it2 = input("")
-            print("How much?")
-            quan = input("")
+            quantity = True
+            while quantity == True:
+                print("How much?")
+                quan = input("")
+                try:
+                    quan = int(quan)
+                    if quan > 10:
+                        quan = 10
+                    quantity = False
+                except ValueError:
+                    print("Not a valid input")
+                    continue
             if it2.lower() == "a" and (mPtn != 0):
                 print(quan, "Magic Potions removed.")
                 mPtn = mPtn - int(quan)
+                if mPtn < 0:
+                    mPtn = 0
                 print('--------------------------------------------')
                 done2 = True
                 m = False
 
             elif it2.lower() == "b" and (water != 0):
-                print(quan, "Water Bottles added.")
+                print(quan, "Water Bottles removed.")
                 print('--------------------------------------------')
                 water = water - int(quan)
+                if water < 0:
+                    water = 0
                 done2 = True
                 m = False
             elif it2.lower() == "c" and (sword != 0):
-                print(quan, "Swords added.")
+                print(quan, "Swords removed.")
                 print('--------------------------------------------')
                 sword = sword-int(quan)
+                if sword < 0:
+                    sword = 0
                 done2 = True
                 m = False
             elif it2.lower() == "d" and (datecake != 0):
-                print(quan, "Date Cakes added.")
+                print(quan, "Date Cakes removed.")
                 print('--------------------------------------------')
                 datecake = datecake-int(quan)
+                if datecake < 0:
+                    datecake = 0
                 done2 = True
                 m = False
             elif it2.lower() == "e" and (hPtn != 0):
-                print(quan, "Health Potions added.")
+                print(quan, "Health Potions removed.")
                 print('--------------------------------------------')
                 hPtn = hPtn-int(quan)
+                if hPtn < 0:
+                    hPtn = 0
                 done2 = True
                 m = False
             elif it2.lower() == "f" and (bow != 0):
-                print(quan, "Bows added.")
+                print(quan, "Bows removed.")
                 print('--------------------------------------------')
                 bow = bow-int(quan)
+                if bow < 0:
+                    bow = 0
                 done2 = True
                 m = False
             elif it2.lower() == "a" and (mPtn == 0):
@@ -283,7 +308,7 @@ def removeItm():
             elif it2.lower() == "g":
                 return
             else:
-                print("Not a valid input.")
+                print("Invalid input.")
     
 
 def savFle():

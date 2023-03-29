@@ -331,7 +331,13 @@ def savFle():
     print("File saved!")
 
 def cGold():
-	print("You currently have 
+	print("You currently have", gold, "gold.")
+    while gca == True
+    gcamount = input("Input amount you would like to change it to.")
+    try:
+        int(gcamount)
+    except ValueError:
+        print("That is an invalid input")
 
 ## main code
 save = input("Enter desired save name, or input 'no' to quit: ")

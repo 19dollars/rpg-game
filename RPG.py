@@ -8,8 +8,9 @@ m = False
 quantity = False
 l = False
 t = False
+gold = 0
 
-## methodsa
+## methods
 def quitProg():
     print("Unsaved progress will be lost")
     sure = input("Are you sure that you want to quit?")
@@ -329,6 +330,9 @@ def savFle():
     f.close()
     print("File saved!")
 
+def cGold():
+	print("You currently have 
+
 ## main code
 save = input("Enter desired save name, or input 'no' to quit: ")
 if save.lower() == 'no':
@@ -373,7 +377,7 @@ else:
             ##shop()
             print("UNDER DEVELOPMENT")
         elif o.lower() == "f":
-            ##chngGld()
+            ##cGold()
             print("UNDER DEVELOPMENT")
         elif o.lower() == "g":
             savFle()

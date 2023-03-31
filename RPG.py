@@ -199,6 +199,8 @@ def addItm():
 
 def removeItm():
     global mPtn, water, hPtn, datecake, sword, bow, space
+    if space <= 10:
+        print("You have no items in your inventory")
     done2 = False
     while done2 == False:
         print('--------------------------------------------')

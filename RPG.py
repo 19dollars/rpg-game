@@ -9,6 +9,7 @@ quantity = False
 l = False
 t = False
 gold = 0
+gcachange = False
 
 ## methods
 def quitProg():
@@ -327,18 +328,25 @@ def savFle():
             f.write("d")
         for i in range(hPtn):
             f.write("h")
+        for i in range(gold):
+            f.write("g")
     f.close()
     print("File saved!")
 
 def cGold():
-	print("You currently have", gold, "gold.")
-    while gca == True
-    gcamount = input("Input amount you would like to change it to.")
-    try:
-        int(gcamount)
-    except ValueError:
-        print("That is an invalid input")
-
+    global gca, gold
+    print("You currently have", gold, "gold.")
+    gca = True
+    while gca == True:
+        gcamount = input("Input amount you would like to change it to.")
+        try:
+            gcamount = int(gcamount)
+            gcachange = True
+        except ValueError:
+            print("That is an invalid input")
+        if gcachange == True:
+            gold = gcamount
+            break
 ## main code
 save = input("Enter desired save name, or input 'no' to quit: ")
 if save.lower() == 'no':
@@ -354,22 +362,23 @@ else:
     sword = int(ltrFrq(svn, "s"))
     datecake = int(ltrFrq(svn, "d"))
     hPtn = int(ltrFrq(svn, "h"))
-    bow = int (ltrFrq(svn, "h"))
+    bow = int(ltrFrq(svn, "h"))
+    gold = int(ltrFrq(svn, "g"))
 
     t = True
     while t == True:
         space = 10-(mPtn+water+sword+datecake+hPtn+bow)
-        print('--------------------------------------------')
-        print("Choose an action:")
-        print("[a] - Add an item.")
-        print("[b] - Remove an item")
-        print("[c] - Show inventory.")
-        print("[d] - Use an item.")
-        print("[e] - Enter shop.")
-        print("[f] - Change gold amount.")
-        print("[g] - Save.")
-        print("[h] - Quit.")
-        print('--------------------------------------------')
+        print("""--------------------------------------------
+        Choose an action:
+[a] - Add an item.
+[b] - Remove an item
+[c] - Show inventory.
+[d] - Use an item.
+[e] - Enter shop.
+[f] - Change gold amount.
+[g] - Save.
+[h] - Quit.
+--------------------------------------------""")
         o = input("")
         if o.lower() == "a":
             addItm()
@@ -383,8 +392,7 @@ else:
             ##shop()
             print("UNDER DEVELOPMENT")
         elif o.lower() == "f":
-            ##cGold()
-            print("UNDER DEVELOPMENT")
+            cGold()
         elif o.lower() == "g":
             savFle()
         elif o.lower() == "h":
